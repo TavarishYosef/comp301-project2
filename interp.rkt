@@ -122,6 +122,34 @@
       ;; -----------------------
       ;; INSERT YOUR CODE HERE 
       ;; -----------------------
+      (list-exp () '())
+
+      (cons-exp (exp1 lst)
+                (let ([val1 (value-of exp1 env)])
+                  (cons (expval->num val1) lst)))
+
+      (mul-exp (lst)
+               (if (null? lst)
+                   0
+                   (apply * lst)))
+      
+      (min-exp (lst) (apply min lst))
+
+      (if-elif-exp (exp1 exp2 exp3 exp4 exp5)
+                   (let ([val1 (value-of exp1 env)])
+                     (if val1
+                         (value-of exp2 env)
+                         (let ([val3 (value-of exp3 env)])
+                           (if val3
+                               (value-of exp4 env)
+                               (value-of exp5 env))))))
+      
+      (rational-exp (num1 num2)
+                    (let ([val1 (num-val num1)]
+                          [val2 (num-val num2)])
+                      (if (= 0 val2)
+                          (error "rational-exp: denominator cannot be zero")
+                          (cons val1 val2))))
 
 
       ;; -----------------------
