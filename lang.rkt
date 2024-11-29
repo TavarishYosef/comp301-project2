@@ -40,7 +40,33 @@
     ;; -----------------------
     ;; INSERT YOUR CODE HERE 
     ;; -----------------------
+    (expression
+     ("(" number "/" number ")")
+     rational-exp)
 
+    (expression
+     ("op" "(" expression "," expression "," number ")")
+     op-exp)
+    
+    (expression ("create-new-list" "(" ")") list-exp)
+
+    (expression
+     ("cons" expression "to" expression)
+     cons-exp)
+
+    (expression
+     ("multiplication" "(" expression ")")
+     mul-exp)
+
+    (expression
+     ("min" "(" expression ")")
+     min-exp)
+
+    (expression
+     ("if" expression "then" expression "elif" expression "then" expression "else" expression)
+     if-elif-exp)
+    
+    (expression (identifier) var-exp)
 
     ;; -----------------------
 ))
