@@ -44,8 +44,8 @@
                                     ;; -----------------------
                                     ;; INSERT YOUR CODE HERE 
                                     ;; -----------------------
-
-
+                              ((= op 3) (/ num1 num2))
+                              (else (- num1 num2))
                                     ;; -----------------------
                               )))
                         
@@ -59,8 +59,8 @@
                               ;; -----------------------
                               ;; INSERT YOUR CODE HERE 
                               ;; -----------------------
-
-
+                              ((= op 3) (cons num2top (* num1 num2bot)))
+                              (else (cons (- (* num1 num2bot) num2top) num2bot))
                               ;; -----------------------
 
                               
@@ -76,8 +76,8 @@
                               ;; -----------------------
                               ;; INSERT YOUR CODE HERE 
                               ;; -----------------------
-
-
+                              ((= op 3) (cons num1top (* num2 num2bot)))
+                              (else (cons (- num1top (* num2 num1bot)) num1bot))
                               ;; -----------------------
                               ))))
 
@@ -93,8 +93,8 @@
                               ;; -----------------------
                               ;; INSERT YOUR CODE HERE 
                               ;; -----------------------
-
-
+                              ((= op 3) (cons (* num1top num2bot) (* num1bot num2top))) 
+                              (else (cons (- (* num1top num2bot) (* num1bot num2top)) (* num1bot num2bot)))
                               ;; ----------------------- 
                             ))))))))
       (zero?-exp (exp1)
@@ -107,8 +107,9 @@
                           ;; -----------------------
                           ;; INSERT YOUR CODE HERE 
                           ;; -----------------------
-
-
+                        (if (zero? (car num1))
+                            (bool-val #t)
+                            (bool-val #f))
                           ;; ----------------------- 
                         ))))
 
@@ -122,18 +123,18 @@
       ;; -----------------------
       ;; INSERT YOUR CODE HERE 
       ;; -----------------------
-      (list-exp () '())
+      (list-exp () (list-val '()))
 
       (cons-exp (exp1 lst)
                 (let ([val1 (value-of exp1 env)])
                   (cons (expval->num val1) lst)))
 
       (mul-exp (lst)
-               (if (null? lst)
-                   0
-                   (apply * lst)))
+               (num-val (if (null? lst)
+                            0
+                            (apply * (apply expval->num lst)))))
       
-      (min-exp (lst) (apply min lst))
+      (min-exp (lst) (num-val (apply min (apply expval->num (lst)))))
 
       (if-elif-exp (exp1 exp2 exp3 exp4 exp5)
                    (let ([val1 (value-of exp1 env)])
@@ -145,11 +146,9 @@
                                (value-of exp5 env))))))
       
       (rational-exp (num1 num2)
-                    (let ([val1 (num-val num1)]
-                          [val2 (num-val num2)])
-                      (if (= 0 val2)
-                          (error "rational-exp: denominator cannot be zero")
-                          (cons val1 val2))))
+                    (if (zero? num2)
+                        (error "rational-exp: denominator cannot be zero")
+                        (rational-val (cons val1 val2))))
 
 
       ;; -----------------------
