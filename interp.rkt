@@ -132,7 +132,7 @@
       (mul-exp (lst)
                (num-val (if (null? lst)
                             0
-                            (apply * (apply expval->num lst)))))
+                            (apply * (map expval->num lst)))))
       
       (min-exp (lst) (num-val (apply min (apply expval->num (lst)))))
 
