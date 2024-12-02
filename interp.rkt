@@ -127,14 +127,14 @@
 
       (cons-exp (exp1 lst)
                 (let ([val1 (value-of exp1 env)])
-                  (cons (expval->num val1) lst)))
+                  (list-val (cons val1 lst))))
 
       (mul-exp (lst)
                (num-val (if (null? lst)
                             0
                             (apply * (map expval->num lst)))))
       
-      (min-exp (lst) (num-val (apply min (apply expval->num (lst)))))
+      (min-exp (lst) (num-val (apply min (map expval->num (lst)))))
 
       (if-elif-exp (exp1 exp2 exp3 exp4 exp5)
                    (let ([val1 (value-of exp1 env)])
