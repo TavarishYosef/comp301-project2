@@ -19,14 +19,15 @@
 ;;; initialize environment with x, y, z
 (define init-env 
   (lambda ()
-     (extend-env
-      'v (num-val 3)
       ;; -----------------------
       ;; INSERT YOUR CODE HERE 
       ;; -----------------------
-
-       
-       (empty-env))))
+      (extend-env 'i (num-val 1)
+                  (extend-env 'v (num-val 5)
+                              (extend-env 'x (num-val 10)
+                                          (empty-env))))
+  )
+)
       ;; -----------------------
 
 ;;;;;;;;;;;;;;;; environment constructors and observers ;;;;;;;;;;;;;;;;
