@@ -76,7 +76,7 @@
                               ;; -----------------------
                               ;; INSERT YOUR CODE HERE 
                               ;; -----------------------
-                              ((= op 3) (cons num1top (* num2 num2bot)))
+                              ((= op 3) (cons num1top (* num2 num1bot)))
                               (else (cons (- num1top (* num2 num1bot)) num1bot))
                               ;; -----------------------
                               ))))
@@ -147,8 +147,8 @@
       
       (rational-exp (num1 num2)
                     (if (zero? num2)
-                        (error "rational-exp: denominator cannot be zero")
-                        (rational-val (cons val1 val2))))
+                        (eopl:error "rational-exp: denominator cannot be zero")
+                        (rational-val (cons num1 num2))))
 
 
       ;; -----------------------

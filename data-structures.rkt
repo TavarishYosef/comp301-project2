@@ -22,6 +22,12 @@
   
   (rational-val
    (rational pair?))
+
+  (list-val
+   (list list?))
+
+  (str-val
+   (string string?))
    
   ;; -----------------------
 )
