@@ -49,7 +49,22 @@
   (lambda (v)
     (cases expval v
       (rational-val (rat) rat)
-      (else (expval-extractor-error 'rat v)))))      
+      (else (expval-extractor-error 'rat v)))))  
+          
+;; expval->list : ExpVal -> List
+(define expval->list
+  (lambda (v)
+    (cases expval v
+      (list-val (lst) lst)
+      (else (expval-extractor-error 'list v)))))
+
+
+;; expval->string : ExpVal -> String
+(define expval->string
+  (lambda (v)
+    (cases expval v
+      (str-val (str) str)
+      (else (expval-extractor-error 'string v)))))
 ;; -----------------------
 
 ;; expval->bool : ExpVal -> Bool
