@@ -59,7 +59,7 @@
                               ;; -----------------------
                               ;; INSERT YOUR CODE HERE 
                               ;; -----------------------
-                              ((= op 3) (cons num2top (* num1 num2bot)))
+                              ((= op 3) (cons (* num1 num2bot) num2top))
                               (else (cons (- (* num1 num2bot) num2top) num2bot))
                               ;; -----------------------
 
