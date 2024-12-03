@@ -22,9 +22,9 @@
       ;; -----------------------
       ;; INSERT YOUR CODE HERE 
       ;; -----------------------
-      (extend-env 'i (num-val 1)
-                  (extend-env 'v (num-val 5)
-                              (extend-env 'x (num-val 10)
+      (extend-env 'z (num-val 3)
+                  (extend-env 'y (num-val 2)
+                              (extend-env 'x (num-val 4)
                                           (empty-env))))
   )
 )

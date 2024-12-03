@@ -143,11 +143,11 @@
                   (num-val (apply min lst)))))
 
       (if-elif-exp (exp1 exp2 exp3 exp4 exp5)
-                   (let ([val1 (value-of exp1 env)])
-                     (if val1
+                   (let ([bool1 (expval->bool (value-of exp1 env))])
+                     (if bool1
                          (value-of exp2 env)
-                         (let ([val3 (value-of exp3 env)])
-                           (if val3
+                         (let ([bool3 (expval->bool (value-of exp3 env))])
+                           (if bool3
                                (value-of exp4 env)
                                (value-of exp5 env))))))
       
