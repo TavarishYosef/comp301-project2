@@ -156,6 +156,12 @@
                         (eopl:error "rational-exp: denominator cannot be zero")
                         (rational-val (cons num1 num2))))
 
+      (simp-exp (exp1 exp2)
+                
+      
+      
+      )
+
 
       ;; -----------------------
 

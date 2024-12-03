@@ -65,6 +65,10 @@
     (expression
      ("if" expression "then" expression "elif" expression "then" expression "else" expression)
      if-elif-exp)
+
+    (expression
+     ("simpl" "(" expression ")")
+     simpl-exp)
     
     (expression (identifier) var-exp)
 
