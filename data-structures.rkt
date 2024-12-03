@@ -48,6 +48,7 @@
 (define expval->rational
   (lambda (v)
     (cases expval v
+      (num-val (num) num)
       (rational-val (rat) rat)
       (else (expval-extractor-error 'rat v)))))  
           
