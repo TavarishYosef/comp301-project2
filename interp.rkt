@@ -138,7 +138,9 @@
       
       (min-exp (lstexp)
                (let ((lst (expval->list (value-of lstexp env))))
-                (num-val (apply min lst))))
+                (if (null? lst) 
+                  (num-val -1)
+                  (num-val (apply min lst)))))
 
       (if-elif-exp (exp1 exp2 exp3 exp4 exp5)
                    (let ([val1 (value-of exp1 env)])
