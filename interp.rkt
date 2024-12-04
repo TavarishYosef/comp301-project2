@@ -156,12 +156,20 @@
                         (eopl:error "rational-exp: denominator cannot be zero")
                         (rational-val (cons num1 num2))))
 
-      (simp-exp (exp1 exp2)
-                
-      
-      
+      (simpl-exp (exp1)
+                (let ((num (expval->rational (value-of exp1 env))))
+                  (if (number? num) (num-val num)
+                      (let* ((numer (car num)) 
+                            (denom (cdr num))
+                            (gcd-val ((if (zero? denom) numer 
+                                      (gcd denom (remainder numer denom)))))
+                           )
+                      (rational-val (cons (/ numer gcd-val) (/ denom gcd-val)))  
+                      )
+                  )
+                )
       )
-
+      
 
       ;; -----------------------
 
