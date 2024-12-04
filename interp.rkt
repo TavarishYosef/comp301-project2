@@ -161,15 +161,15 @@
                   (if (number? num) (num-val num)
                       (let* ((numer (car num)) 
                             (denom (cdr num))
-                            (gcd-val ((if (zero? denom) numer 
-                                      (gcd denom (remainder numer denom)))))
+                            (gcd-val (if (zero? denom) numer 
+                                      (gcd denom (remainder numer denom))))
                            )
                       (rational-val (cons (/ numer gcd-val) (/ denom gcd-val)))  
                       )
                   )
                 )
       )
-      
+
 
       ;; -----------------------
 
